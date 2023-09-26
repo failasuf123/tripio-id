@@ -8,12 +8,17 @@ import jwtDecode from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import {useRouter} from 'next/navigation'
 
-function Header() {
+function HeaderLandingPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState('');
   const [isExperienceModalOpen, setIsExperienceModalOpen] = useState(false); // State for experience modal
   const [logoutPopupVisible, setLogoutPopupVisible] = useState(false); // State for logout popup
+  const [modalIsVisible, setModalVisible] = useState(false);
+  const toggleModal = () => {
+    setModalVisible(!modalIsVisible);
+  };
+
   const router = useRouter();
 
   useEffect(() => {
@@ -57,40 +62,15 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md grid grid-cols-3 py-2 px-5">
       <Link href="/">
-        <div className="mt-1">
+        <div className="mt-2">
           <Image src="/tripio-logo.png" alt="SVG Image" width={66} height={66} className="logo-image" />
         </div>
       </Link>
       <div>
         <SearchInput/>
       </div>
-      <div className="hidden md:flex items-center space-x-4 justify-end text-gray-500 px-4 gap-2">
-        <Link href="/articlepost">
-          <div className="relative flex items-center flex-col align-middle cursor-pointer hover:text-gray-700">
-            <BookOpenIcon className="inline-flex h-6 w-6 bg-none mb-1" /> 
-            <p className="text-xs">Artikel</p>
-            {/* <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-cyan-500"></div> */}
-          </div>
-        </Link>
-        <Link href="/place">
-          <div className="relative flex items-center flex-col align-middle cursor-pointer hover:text-gray-700">
-            <GlobeAsiaAustraliaIcon className="inline-flex h-6 w-6 bg-none mb-1" /> 
-            <p className="text-xs">Tempat</p>
-            <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-cyan-500"></div>
-          </div>
-        </Link>
-        {isLoggedIn && (
-          <div className="relative flex items-center flex-col align-middle cursor-pointer hover:text-gray-700">
-            <GlobeAsiaAustraliaIcon className="inline-flex h-6 w-6 bg-none mb-1" />
-            {/* <p className="text-xs">{userEmail}</p> */}
-            <p className="text-xs">Login</p>
-            {/* <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-cyan-500"></div> */}
-          </div>
-        )}
-        <div className="flex items-center flex-col align-middle cursor-pointer hover:text-gray-700"  onClick={openExperienceModal}>
-          <RocketLaunchIcon className="inline-flex h-6 w-6 bg-none mb-1"/>
-          <p className="text-xs">Pengalaman</p>
-        </div>
+      <div className=" flex items-center  justify-end text-gray-500 px-4 ">
+    
         <div
           className="relative flex items-center flex-row align-middle cursor-pointer border border-gray-500 py-0.5 px-2 rounded-xl hover:text-gray-700 hover:border-gray-700"
           onClick={toggleDropdown}
@@ -185,7 +165,25 @@ function Header() {
   </div>
 )}
 
+{modalIsVisible &&
+      (
+        <div className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center w-full h-full bg-opacity-75 bg-gray-800 overflow-hidden h-sc">
+          <div className="relative bg-white rounded-lg  shadow-md p-2 mx-5 flex flex-col justify-evenly items-center h-96 ">
+            <div className="relative rounded-full">
+              <Image src="/loginAsk.svg" alt="SVG Image" height={250} width={250}/>
+            </div>
 
+            <div className="text-gray-500 px-3">
+               <h2>Mohon maaf, Tripio sedang dalam pengembangan</h2>
+            </div>
+
+            <div onClick={toggleModal} className="absolute bg-red-500 rounded-full top-3 right-4 py-1 px-2 cursor-pointer font-bold hover:scale-90 transition duration-150">
+              X
+            </div>
+
+          </div>
+        </div>
+      )}
 
 
 
@@ -195,4 +193,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderLandingPage;

@@ -65,9 +65,9 @@ export default function Home() {
               <div className=" px-10 absolute inset-0 flex flex-col items-center cursor-pointer  justify-center rounded-md">
                 {/* <h1 className="mt-16 text-cyan-200 text-2xl md:mt-24 md:text-4xl">Tripio</h1> */}
                 <div className="mt-16">
-                  <Image src="/tripio-text.png" alt="SVG Image" width={140} height={88} className="logo-image" />
+                  <Image src="/tripio-text.png" alt="SVG Image" width={120} height={66} className="logo-image" />
                 </div>
-                <p className="text-center  mt-1 text-sm md:mt-4 md:text-lg">Empowering Indonesian Tourism: Tripio's Journey of Discovery"</p>
+                <p className="text-center  mt-4 text-sm md:mt-4 md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 <button
                   onClick={handleGetStarted}
                   className="bg-opacity-50 bg-black p-2 rounded-lg mt-5 text-cyan-100 border-2 hover:bg-opacity-20 active:bg-opacity-100 hover:px-3"
@@ -88,7 +88,7 @@ export default function Home() {
 
         <div className="flex flex-row gap-8 justify-start align-middle  items-center mt-5 md:gap-12 md:flex-nowrap overflow-y-scroll no-scrollbar">
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/img-kotu-jkt.jpg" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -97,7 +97,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200  ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200  ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/img-borobudur.jpg" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -105,7 +105,7 @@ export default function Home() {
               <p className="text-gray-600 mt-2 text-base md:mt-2 md:text-lg">Jogjakarta</p>
             </div>
           </div>
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/img-bromo.jpg" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -114,7 +114,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/img-bromo2.jpg" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -123,7 +123,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/img-bromo4.jpg" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -132,7 +132,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/img-glider-ppl.jpg" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -140,7 +140,7 @@ export default function Home() {
               <p className="text-gray-600 mt-2 text-base md:mt-2 md:text-lg">Bogor</p>
             </div>
           </div>
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/tall-one.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -149,7 +149,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/img-labuanbajo.jpg" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -167,7 +167,7 @@ export default function Home() {
 
         <div className="flex flex-row gap-8 justify-start align-middle  items-center mt-5 md:gap-12 md:flex-nowrap overflow-y-scroll no-scrollbar">
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/family.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -176,7 +176,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200  ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200  ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/date.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -185,7 +185,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/hangout.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -194,7 +194,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/meeting.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -202,7 +202,7 @@ export default function Home() {
               <p className="text-gray-600 mt-2 text-base md:mt-2 md:text-lg">Meeting</p>
             </div>
           </div>
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/camp.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -211,7 +211,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/billiard.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -219,7 +219,7 @@ export default function Home() {
               <p className="text-gray-600 mt-2 text-base md:mt-2 md:text-lg">Billiard</p>
             </div>
           </div>
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/hiking.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -228,7 +228,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/golf.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -237,7 +237,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/sport.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -246,7 +246,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div onClick={handleGetStarted} className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
+          <div className=" flex flex-col items-center cursor-pointer hover:scale-105 transition duration-200 ">
             <div className=" w-20 h-20 relative md:w-32 md:h-32" >
               <Image src="/activity/waterpark.png" alt="SVG Image" layout="fill" objectFit="cover" className="rounded-lg" />
             </div>
@@ -267,7 +267,20 @@ export default function Home() {
             </div>
 
             <div className="text-gray-500 px-3">
-               <h2>Mohon maaf, Tripio sedang dalam pengembangan</h2>
+              <p><span className="text-gray-700">Login</span> untuk mendapatkan experience yang baru</p>
+            </div>
+
+            <div className="text-gray-500 flex flex-row justify-between items-center">
+              <div className="mr-5">
+                <Link href={'/place'}>
+                  <button  className="px-2 py-2 text-cyan-500 border rounded-lg border-cyan-500 hover:scale-105 transition duration-150">Nanti dulu</button>
+                </Link>
+              </div>
+              <div className="ml-5 bg-cyan-500 text-white rounded-lg hover:scale-105 transition duration-150">
+                <Link href={'/login'}>
+                <button className="px-3 py-2">Login</button>
+                </Link>
+              </div>
             </div>
 
             <div onClick={toggleModal} className="absolute bg-red-500 rounded-full top-3 right-4 py-1 px-2 cursor-pointer font-bold hover:scale-90 transition duration-150">

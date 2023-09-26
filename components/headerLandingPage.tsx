@@ -8,7 +8,7 @@ import jwtDecode from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import {useRouter} from 'next/navigation'
 
-function Header() {
+function HeaderLandingPage() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState('');
@@ -57,40 +57,15 @@ function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md grid grid-cols-3 py-2 px-5">
       <Link href="/">
-        <div className="mt-1">
+        <div className="mt-2">
           <Image src="/tripio-logo.png" alt="SVG Image" width={66} height={66} className="logo-image" />
         </div>
       </Link>
       <div>
         <SearchInput/>
       </div>
-      <div className="hidden md:flex items-center space-x-4 justify-end text-gray-500 px-4 gap-2">
-        <Link href="/articlepost">
-          <div className="relative flex items-center flex-col align-middle cursor-pointer hover:text-gray-700">
-            <BookOpenIcon className="inline-flex h-6 w-6 bg-none mb-1" /> 
-            <p className="text-xs">Artikel</p>
-            {/* <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-cyan-500"></div> */}
-          </div>
-        </Link>
-        <Link href="/place">
-          <div className="relative flex items-center flex-col align-middle cursor-pointer hover:text-gray-700">
-            <GlobeAsiaAustraliaIcon className="inline-flex h-6 w-6 bg-none mb-1" /> 
-            <p className="text-xs">Tempat</p>
-            <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-cyan-500"></div>
-          </div>
-        </Link>
-        {isLoggedIn && (
-          <div className="relative flex items-center flex-col align-middle cursor-pointer hover:text-gray-700">
-            <GlobeAsiaAustraliaIcon className="inline-flex h-6 w-6 bg-none mb-1" />
-            {/* <p className="text-xs">{userEmail}</p> */}
-            <p className="text-xs">Login</p>
-            {/* <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-cyan-500"></div> */}
-          </div>
-        )}
-        <div className="flex items-center flex-col align-middle cursor-pointer hover:text-gray-700"  onClick={openExperienceModal}>
-          <RocketLaunchIcon className="inline-flex h-6 w-6 bg-none mb-1"/>
-          <p className="text-xs">Pengalaman</p>
-        </div>
+      <div className=" flex items-center  justify-end text-gray-500 px-4 ">
+    
         <div
           className="relative flex items-center flex-row align-middle cursor-pointer border border-gray-500 py-0.5 px-2 rounded-xl hover:text-gray-700 hover:border-gray-700"
           onClick={toggleDropdown}
@@ -195,4 +170,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderLandingPage;

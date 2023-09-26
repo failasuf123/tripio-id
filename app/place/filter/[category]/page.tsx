@@ -8,38 +8,30 @@ import Header from '@/components/header';
 import NavList from '@/components/NavList';
 import { TempatWisata } from '@/typings';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import useSWR from 'swr'
 import NextNProgress from "nextjs-progressbar";
 
 
 
-
-export default function ListWisata() {
+export default function ListWisata({ params }: { params: { category: string } }) {
   const [data, setData] = useState<TempatWisata[]>([]);
   const [loading, setLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const category = params.category; // Mengakses properti 'category'
+
+  const url = `http://localhost:8000/api/get_tempat_wisata_by_kategori/${category}`;
 
   useEffect(() => {
-
     setLoading(true);
-    axios.get('http://localhost:8000/api/get_tempat_wisata')
+    axios.get(url)
       .then(response => {
         setData(response.data);
+        setLoading(false); // Menyetel loading menjadi false setelah data diambil
       })
       .catch(error => {
         console.error('Error fetching data:', error);
+        setLoading(false); // Juga menyetel loading menjadi false jika terjadi error
       });
-  }, []);
+  }, [url]); // Memasukkan 'url' dalam array dependensi untuk menjalankan ulang efek saat 'url' berubah
 
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
 
 
 
@@ -50,11 +42,11 @@ export default function ListWisata() {
 
 
       <Suspense fallback="Loading Tempat Wisata...">
-      <div className="flex flex-cols flex-wrap items-start justify-evenly p-5 pt-1 ">
+      <div className="flex flex-cols flex-wrap items-start justify-evenly p-5 pt-1">
         {data.map(item => (
 
         <Link href={`/place/${item.id}`}>
-            <div key={item.id} className=" scale-110 w-72 items-start  cursor-pointer hover:shadow-xl rounded-md mt-14 md:mt-5 hover:border-solid border-b-cyan-400 md:scale-100" style={{ height: '400px' }}>
+            <div key={item.id} className="w-72 items-start  cursor-pointer hover:shadow-xl rounded-md mt-5 hover:border-solid border-b-cyan-400" style={{ height: '400px' }}>
             <div className="relative h-3/5">
                 {item.foto ? (
                     <div
@@ -74,15 +66,8 @@ export default function ListWisata() {
                     />
                 )}
 
-                <div className="absolute bottom-3 right-3 bg-black opacity-60 p-2 rounded-full hover:opacity-80 active:opacity-100"
-                  onClick={(e) => {
-                    e.stopPropagation(); // Menghentikan penyebaran event klik
-                    openModal();
-                    
-                  }}>
-                <RocketLaunchIcon
-                  className="w-5 h-5 text-cyan-400 cursor-pointer"
-                  />
+                <div className="absolute bottom-3 right-3 bg-black opacity-60 p-2 rounded-full hover:opacity-80 active:opacity-100">
+                <RocketLaunchIcon className="w-5 h-5 text-cyan-400" />
                 </div>
             </div>
             <div className="py-2 px-3 font-sans">
@@ -107,18 +92,6 @@ export default function ListWisata() {
         </Link>
         
         ))}
-
-              {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-50">
-          <div className="bg-white p-4 rounded-md">
-            <p className="text-gray-800 mb-2">Anda harus login terlebih dahulu.</p>
-            <button className="bg-cyan-400 text-white px-4 py-2 rounded-md" onClick={closeModal}>
-              Ok
-            </button>
-          </div>
-        </div>
-      )}
         
       </div>
         </Suspense>
