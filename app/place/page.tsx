@@ -1,15 +1,12 @@
 'use client'
 import React, { Suspense, useEffect, useState } from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
+i
 import {  MagnifyingGlassIcon,GlobeAsiaAustraliaIcon, MapIcon, RocketLaunchIcon,MapPinIcon, StarIcon} from '@heroicons/react/24/solid';
 import axios from 'axios';
 import Header from '@/components/header';
 import NavList from '@/components/NavList';
 import { TempatWisata } from '@/typings';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
-import useSWR from 'swr'
 import NextNProgress from "nextjs-progressbar";
 
 

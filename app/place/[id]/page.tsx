@@ -1,12 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Image from 'next/image'
-import Link from 'next/link';
+
 import { useRouter } from 'next/navigation';
 import { MapIcon, MapPinIcon, RocketLaunchIcon, ShareIcon, Squares2X2Icon, StarIcon, ClipboardDocumentIcon } from '@heroicons/react/24/solid';
 import { FotoTambahanWisata, TempatWisata } from '@/typings';
-import Header from '@/components/header';
 import KategoriIcon  from '@/components/TempatWisata/kategoriIcon'
 import GalleryModal from '@/components/TempatWisata/imageCoursel';
 import HeaderLandingPage from '@/components/headerLandingPage';

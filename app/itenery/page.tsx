@@ -1,14 +1,10 @@
 'use client'
 import Head from 'next/head'
 import Image from 'next/image'
-import Header from '@/components/header';
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import NavList from '@/components/NavList';
 import jwtDecode from 'jsonwebtoken';
 import Cookies from 'js-cookie';
-import Locationlist from '@/components/LocationList';
-import headerLandingPage from '@/components/headerLandingPage';
 import HeaderLandingPage from '@/components/headerLandingPage';
 
 
