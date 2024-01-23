@@ -38,9 +38,9 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-white h-screen text-white">
+    <div className="bg-gradient-to-l from-fuchsia-50 to-cyan-50 h-screen text-white">
       <Head>
-      <title>Epent</title>
+      <title>Tripio</title>
         <link rel="icon" href="/vercel.svg "/>
 
       </Head>

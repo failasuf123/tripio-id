@@ -90,25 +90,25 @@ function getIconByName(name: string): IconProp {
 function kategoriIcon({ kategori }: { kategori: string[] }) {
   const [categories, setCategories] = useState<Category[]>([]);
 
+
   useEffect(() => {
-    fetchCategories();
+    // Memindahkan fetchCategories ke dalam useEffect dengan ketergantungan kosong
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get<Category[]>('http://localhost:8000/api/get_kategori');
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchCategories(); // Panggil fungsi fetchCategories sekali saat komponen dimuat
   }, []);
 
-  const fetchCategories = () => {
-    axios
-      .get<Category[]>('http://localhost:8000/api/get_kategori')
-      .then(response => setCategories(response.data))
-      .catch(error => console.error('Error fetching data:', error));
-  };
+  // console.log("Kategori dari components", kategori);
+  // console.log("Categories dari data seluruh icon", categories);
 
-  console.log("Kategori dari components", kategori);
-  console.log("Categories dari data seluruh icon", categories);
 
-  // const filteredCategories = kategori.map(katId => {
-  //   const category = categories.find(category => category.nama === katId);
-  //   return category;
-  // });
-  // console.log("Filtered Categories", filteredCategories);
 
   const iconTempatWisata: string[] = []
 

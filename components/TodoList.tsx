@@ -138,25 +138,7 @@ function CategoryList() {
 
         );
       })}
-          {/* {todos?.length === 0?(
-            <div><p>Loading my icons</p></div>
-          ) : (
-            todos.map(todo => {
-              console.log(todo)
-              const icon = getIconByName(todo.icon); // Mendapatkan ikon berdasarkan nama
 
-              if (!icon) return null; // Jika ikon tidak ditemukan, tidak ditampilkan
-
-              return(
-                <div key={todo.id} className="flex flex-col relative items-center gap-1 text-gray-500 cursor-pointer hover:text-gray-700">
-                  <FontAwesomeIcon icon={icon} className="inline-flex h-6 w-6 bg-none mb-1" />
-                  <p style={{ maxWidth: '150px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} className="text-xs invisible md:flex-auto md:visible">
-                    {todo.nama}
-                  </p>
-                </div>
-              )
-            })
-          )} */}
     </div>
   );
 }

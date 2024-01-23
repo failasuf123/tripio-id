@@ -1,9 +1,11 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter,Raleway, Delius_Swash_Caps} from 'next/font/google'
 import React from 'react'
 import Header from '@/components/header'
 
 const inter = Inter({ subsets: ['latin'] })
+const Delius = Delius_Swash_Caps({ subsets: ['latin'], weight: '400' });
+
 
 export const metadata = {
   title: 'Create Next App',
@@ -20,6 +22,7 @@ export default function RootLayout({
       {/* <Header /> */}
 
       <body className={inter.className}>{children}</body>
+      {/* <body className={Delius.className}>{children}</body> */}
     </html>
   )
 }

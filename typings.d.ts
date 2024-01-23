@@ -28,6 +28,9 @@ export interface TempatWisata {
   deskripsi_singkat?: string | null;
   deskripsi_lengkap?: string | null;
   foto?: string | null; // You can use 'string' to represent the file path
+  harga: number | null;
+  website: string,
+  latitude_longitud: string,
 }
 
 export interface FotoTambahanWisata {
@@ -44,3 +47,44 @@ export interface PostMetadata {
   subtitle: string;
   slug: string;
 }
+
+export interface Comment {
+  id: number; // Tambahkan tipe data yang sesuai untuk ID
+  tempat_wisata: TempatWisata;
+  author: CustomUser;
+  content: string;
+  liked: number;
+  created_at: string;
+}
+
+export interface Reply {
+  id: number; // Tambahkan tipe data yang sesuai untuk ID
+  comment: Comment;
+  author: CustomUser;
+  content: string;
+  liked: number;
+  created_at: string;
+}
+
+export interface CommentWithUserData extends Comment {
+  // userData: User;
+  userData: {
+    id: number;
+    name: string;
+    foto: string;
+    jumlah_review: number;
+    review_disukai: number;
+    user: number;
+  }
+}
+
+export interface User {
+  id: number;
+  name: string;
+  foto: string;
+  jumlah_review: number;
+  review_disukai: number;
+  user: number;
+
+}
+
