@@ -14,7 +14,7 @@ import NextNProgress from "nextjs-progressbar";
 async function getUserData(id:any) {
   const res = await fetch(`http://localhost:8000/api/get_profile_user_by_id_user/${id}`)
 
- 
+
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -64,11 +64,10 @@ function Header() {
       fetchUserData();
     }
   }, [userId]);
-  // const data = await getUserData(userId:any)L
 
   const handleLogout = () => {
     // Hapus token dari cookies dan set status login menjadi false
-    router.push('/')
+    router.push('/place')
     alert("Logout berhasil")
     Cookies.remove('access_token');
     setIsLoggedIn(false);
@@ -89,14 +88,6 @@ function Header() {
     setIsExperienceModalOpen(false);
   };
 
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearch = (query:any) => {
-    query.preventDefault();
-    // Redirect to the search path
-    // window.location.href = `/place/search/${encodeURIComponent(searchQuery)}`;
-    console.log('search bar is : ' ,encodeURIComponent(searchQuery))
-  };
 
 
 
@@ -111,9 +102,9 @@ function Header() {
         </div>
       </Link>
       <div>
-        <form onSubmit={handleSearch}>
+        <SearchInput />
+        {/* <form onSubmit={handleSearch}>
           <NextNProgress color="#26C6DA"/>
-          {/* <Component {...pageProps} /> */}
           <div className="flex items-center justify-between md:border-2 rounded-full py-2 text-sm">
             <input
               className="flex-grow pl-5 bg-transparent outline-none text-gray-600 placeholder-gray-400"
@@ -129,7 +120,7 @@ function Header() {
               <MagnifyingGlassIcon />
             </button>
           </div>
-        </form>
+        </form> */}
       </div>
       <div className="hidden md:flex items-center space-x-4 justify-end text-gray-500 px-4 gap-2">
         <Link href="/articlepost">

@@ -32,7 +32,8 @@ export default function Page({ params }: { params: { id: string } }) {
   const [modalImageVisible, setModalImageVisible] = useState(false);
   const [pageUrl, setPageUrl] = useState('');
   const [dataComment, setDataComment] = useState<CommentWithUserData[]>([]);
-  const [likedComments, setLikedComments] = useState([]);
+  const [likedComments, setLikedComments] = useState<number[]>([]);
+    // const [likedComments, setLikedComments] = useState([]);
   const [userId, setUserId] = useState([]);
   const [replies, setReplies] = useState({});
   const [price, setPrice] = useState(Data.priceToDollarIcon)
@@ -164,11 +165,16 @@ export default function Page({ params }: { params: { id: string } }) {
 
   }, [data?.id]);
   
-  console.log('ini data comment :', dataComment)
 
 
-  
-  const toggleLike = (commentId:number) => {
+
+  const handleLike = async (commentId:number) => {
+    // Data yang akan Anda kirimkan
+    const dataToSend = {
+      id: commentId,
+      author: userId,
+    };
+
     if (likedComments.includes(commentId)) {
       // Komentar sudah dilike, maka kita akan "unlike" komentar
       setLikedComments(likedComments.filter((id) => id !== commentId));
@@ -176,7 +182,33 @@ export default function Page({ params }: { params: { id: string } }) {
       // Komentar belum dilike, maka kita akan "like" komentar
       setLikedComments([...likedComments, commentId]);
     }
+
+    console.log('ini like data yang dipost',dataToSend)
+  
+    try {
+      const response = await fetch('http://localhost:8000/api/liking_comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(dataToSend), // Kirim data dalam format JSON
+      });
+  
+      if (response.ok) {
+        // Ulasan berhasil ditambahkan, lakukan tindakan sesuai kebutuhan
+        console.log('Like');
+
+      } else {
+        // Handle kesalahan jika diperlukan
+        console.error('Gagal menambahkan ulasan');
+      }
+    } catch (error) {
+      console.error('Terjadi kesalahan saat menambahkan ulasan:', error);
+    }
+  
+    // Tutup modal ulasan setelah selesai
   };
+
 
 
   const handleTulisUlasan = () => {
@@ -466,7 +498,8 @@ export default function Page({ params }: { params: { id: string } }) {
                             <p className="text-black text-md">{comment.userData[0].name}</p>
 
 
-                            <p className="text-cyan-800 text-justify text-sm">{comment.content}</p>
+                            {/* <p className="text-cyan-800 text-justify text-sm">{comment.content}</p> */}
+                            <p className="text-cyan-800 text-justify text-sm" dangerouslySetInnerHTML={{ __html: comment.content }}></p>
                             <div className="flex justify-end mt-2"> {/* Menggunakan flex untuk membuat button berada di ujung */}
                               <button className="text-xs text-cyan-600 hover:underline" onClick={() => fetchReplies(comment.id)}>Reply</button>
                             </div>                        
@@ -475,9 +508,11 @@ export default function Page({ params }: { params: { id: string } }) {
                           {/* div3 */}
                           <div className="flex flex-col items-center ml-4">
                           {likedComments.includes(comment.id) ? (
-                              <HeartIcon className="h-5 w-5 items-center cursor-pointer text-red-400" onClick={() => toggleLike(comment.id)} />
+                              <HeartIcon className="h-5 w-5 items-center cursor-pointer text-red-400" onClick={() => handleLike(comment.id)} />
+                              // <HeartIcon className="h-5 w-5 items-center cursor-pointer text-red-400" onClick={() => toggleLike(comment.id)} />
                             ) : (
-                              <HeartOutline className="h-5 w-5 items-center cursor-pointer text-red-400" onClick={() => toggleLike(comment.id)} />
+                              <HeartOutline className="h-5 w-5 items-center cursor-pointer text-red-400" onClick={() => handleLike(comment.id)} />
+                              // <HeartOutline className="h-5 w-5 items-center cursor-pointer text-red-400" onClick={() => toggleLike(comment.id)} />
                             )}
                             <p className="text-red-400">{comment.liked}</p>
                           </div>

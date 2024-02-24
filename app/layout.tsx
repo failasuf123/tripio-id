@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter,Raleway, Delius_Swash_Caps} from 'next/font/google'
 import React from 'react'
 import Header from '@/components/header'
+import { QuerySearchWrapper } from '@/Context'
 
 const inter = Inter({ subsets: ['latin'] })
 const Delius = Delius_Swash_Caps({ subsets: ['latin'], weight: '400' });
@@ -19,10 +20,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <Header /> */}
-
-      <body className={inter.className}>{children}</body>
-      {/* <body className={Delius.className}>{children}</body> */}
+      {/* <body className={inter.className}>
+       <QuerySearchWrapper>
+        {children}
+       </QuerySearchWrapper>
+      </body> */}
+      <body className={Delius.className}>
+      <QuerySearchWrapper>
+        {children}
+         </QuerySearchWrapper>
+      </body>
     </html>
   )
 }

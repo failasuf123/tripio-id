@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import axios from 'axios';
-import router, { useRouter } from 'next/navigation';
+import  { useRouter } from 'next/navigation';
 import Image from 'next/image'
 import Link from 'next/link';
 
@@ -42,7 +42,7 @@ const RegisterPage = () => {
         <div className="md:flex w-full">
         <div className="hidden md:block w-1/2 bg-cyan-500 py-10 px-10 relative">
             <Image src="/img-labuanbajo.jpg" alt="Image" layout="fill" objectFit="cover" />
-          </div>
+        </div>
           <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
             <div className="text-center mb-10">
               <h1 className="font-bold text-3xl text-gray-900">REGISTER</h1>

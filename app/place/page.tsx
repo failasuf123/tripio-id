@@ -1,7 +1,7 @@
 'use client'
 import React, { Suspense, useEffect, useState } from 'react';
 import { IconProp,library } from '@fortawesome/fontawesome-svg-core';
-import { RocketLaunchIcon,MapPinIcon, StarIcon} from '@heroicons/react/24/solid';
+import { MapPinIcon, StarIcon} from '@heroicons/react/24/solid';
 import axios from 'axios';
 import Header from '@/components/header';
 import { TempatWisata } from '@/typings';
@@ -14,7 +14,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Data from '@/Shared/Data';
-// import HeaderBeta from '@/components/Navbar_Beta/headerbeta';
+import { QuerySearchWrapper,useAppContext } from '@/Context';
+
+
 
 interface PageProps {
   params: {
@@ -27,6 +29,9 @@ export default function ListWisata({ params }: PageProps) {
   const [loading, setLoading] = useState(true);
   const [spinner, setSpinner] = useState<boolean>(false);
 
+  //Context
+  const {search, setSearch} = useAppContext();
+
   //Navbar Data kota dan kategori
   const [CityList, setCityList] = useState(DataNavbar.CityList);
   const [CategoryList, setCategoryList] = useState(DataNavbar.IconPropsCategory);
@@ -37,6 +42,8 @@ export default function ListWisata({ params }: PageProps) {
 
   //Data Harga 
   const [price, setPrice] = useState(Data.priceToDollarIcon)
+
+  // const { query } = useSearch();
 
   useEffect(() => {
     if(selectedCity == "Jakarta"){
@@ -54,6 +61,32 @@ export default function ListWisata({ params }: PageProps) {
     }
   }, [selectedCity]);
 
+  useEffect(() => {
+
+    console.log("Search value changed:", search);
+
+    if (search) {
+      setLoading(true);
+      setData([])
+      setSpinner(true)
+
+      const apiUrl = `http://localhost:8000/api/get_tempat_wisata_by_search_nama/${search}`;
+
+      console.log("API URL:", apiUrl);
+
+      axios.get(apiUrl)
+      .then(response => {
+        console.log("API Response:", response.data);
+        setData(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+        setLoading(false);
+      });
+
+    }
+  }, [search]);
 
   
   const clickCityGetAPI=(city:string|null|undefined)=>{
@@ -192,33 +225,6 @@ export default function ListWisata({ params }: PageProps) {
       });
     };
 
-    const searchToGetAPI=(query:string|null|undefined) => {
-      setLoading(true);
-      setData([])
-      setSpinner(true)
-  
-      
-      let apiUrl = `http://localhost:8000/api/get_tempat_wisata_by_search_nama/${query}`;
-
-  
-      axios.get(apiUrl)
-      .then(response => {
-        // setTimeout(() => { 
-          setData(response.data);
-          setLoading(false);
-          
-      //   }, 2000);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-        setLoading(false);
-      });
-      
-  
-      console.log(`Just Search Query is, ${query}`)
-  
-    }
-  
     
 
   return (
@@ -315,9 +321,7 @@ export default function ListWisata({ params }: PageProps) {
                     />
                 )}
 
-                {/* <div className="absolute bottom-3 right-3 bg-black opacity-60 p-2 rounded-full hover:opacity-80 active:opacity-100">
-                <RocketLaunchIcon className="w-5 h-5 text-cyan-400" />
-                </div> */}
+
             </div>
             <div className="py-2 px-3 font-sans">
               <h2 className="text-black text-lg mb-1 font-medium">{item.nama}</h2>
@@ -332,13 +336,6 @@ export default function ListWisata({ params }: PageProps) {
               </div>
             </div>
             <p className="text-gray-500 text-sm line-clamp-3 ">{item.deskripsi_singkat}</p>
-              {/* <div className="flex flex-row mt-1 items-center">
-                <p className="text-green-600 text-lg ">Rp 5.000.000</p>
-                <p className="text-gray-400 ml-1 text-xs"> (estimasi)</p>
-                
-              </div> */}
-              {/* <p>{item.harga}</p> */}
-
               <div className="flex flex-row mt-1 items-center">
                 {Data.priceToDollarIcon.find(price => price.id === item.harga) ? (
                   <>

@@ -3,11 +3,14 @@ import React from 'react'
 import {Location,Category, TempatWisata} from '@/typings';
 import { revalidateTag } from 'next/cache';
 
-// export const addTempatwisataToDatabase = async (e:FormData) => {
-//   const name = e.get("nama")?.toString();
-// }
+export const userLikeReview = async (e:FormData) => {
+  const id = e.get("comment")?.toString();
+  const author = e.get("userName")?.toString();
 
-// Menambahkan Location
+}
+
+
+
 export const addLocationToDatabase = async (e:FormData) => {
     const nama = e.get("nama")?.toString();
     const isLocked = e.get("isLocked") === "on";
